@@ -1,7 +1,13 @@
 {
   "name": "adonis-mix-asset",
   "version": "0.0.1",
-  "description": "Simple assets management for AdonisJs V5",
+  "description": "Laravel Mix for AdonisJs v5",
+  "main": "build/providers/MixAssetProvider.js",
+  "files": [
+		"build/commands",
+		"build/providers",
+    "build/src"
+  ],
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "pretest": "npm run lint",
@@ -16,25 +22,30 @@
     "release": "np",
     "version": "npm run build",
     "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json wahyubucil/adonis-mix-asset"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/wahyubucil/adonis-mix-asset.git"
-	},
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wahyubucil/adonis-mix-asset.git"
+  },
   "keywords": [
-		"adonis-mix-asset",
-		"AdonisJs",
-		"Adonis v5 assets"
-	],
+    "AdonisJs",
+    "Adonis Laravel Mix",
+    "Adonis v5 asset bundler"
+  ],
   "author": "wahyubucil",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/wahyubucil/adonis-mix-asset/issues"
-	},
-	"homepage": "https://github.com/wahyubucil/adonis-mix-asset/README.md",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wahyubucil/adonis-mix-asset/issues"
+  },
+  "homepage": "https://github.com/wahyubucil/adonis-mix-asset#readme",
   "devDependencies": {
+    "@adonisjs/ace": "^6.9.4",
+    "@adonisjs/core": "^5.0.0-preview-rc-1.12",
+    "@adonisjs/fold": "^6.4.1",
     "@adonisjs/mrm-preset": "^2.4.0",
+    "@adonisjs/view": "^2.0.9",
     "@types/node": "^14.11.2",
+    "@types/webpack-bundle-analyzer": "^3.8.0",
     "commitizen": "^4.2.1",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^3.0.1",
@@ -51,7 +62,12 @@
     "npm-audit-html": "^1.4.3",
     "prettier": "^2.1.2",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "webpack": "^5.0.0-rc.4",
+    "webpack-bundle-analyzer": "^3.9.0"
+	},
+	"peerDependencies": {
+    "laravel-mix": "^6.0.0-beta.4"
   },
   "husky": {
     "hooks": {
@@ -67,12 +83,6 @@
       ".ts"
     ]
   },
-  "main": "build/index.js",
-  "files": [
-    "build/src",
-    "build/index.d.ts",
-    "build/index.js"
-  ],
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
