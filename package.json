@@ -4,9 +4,10 @@
   "description": "Laravel Mix for AdonisJs v5",
   "main": "build/providers/MixAssetProvider.js",
   "files": [
-		"build/commands",
-		"build/providers",
-    "build/src"
+    "build/commands",
+    "build/providers",
+    "build/src",
+    "build/instructions.js"
   ],
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
@@ -43,6 +44,7 @@
     "@adonisjs/core": "^5.0.0-preview-rc-1.12",
     "@adonisjs/fold": "^6.4.1",
     "@adonisjs/mrm-preset": "^2.4.0",
+    "@adonisjs/sink": "^1.0.17",
     "@adonisjs/view": "^2.0.9",
     "@types/node": "^14.11.2",
     "@types/webpack-bundle-analyzer": "^3.8.0",
@@ -65,8 +67,8 @@
     "typescript": "^4.0.3",
     "webpack": "^5.0.0-rc.4",
     "webpack-bundle-analyzer": "^3.9.0"
-	},
-	"peerDependencies": {
+  },
+  "peerDependencies": {
     "laravel-mix": "^6.0.0-beta.4"
   },
   "husky": {
@@ -91,5 +93,14 @@
   "np": {
     "contents": ".",
     "anyBranch": false
+  },
+  "adonisjs": {
+    "instructions": "./build/instructions.js",
+    "commands": [
+      "adonis-mix-asset/build/commands"
+    ],
+    "providers": [
+      "adonis-mix-asset"
+    ]
   }
 }
