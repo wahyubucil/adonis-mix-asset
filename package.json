@@ -7,6 +7,7 @@
     "build/commands",
     "build/providers",
     "build/src",
+    "build/templates",
     "build/instructions.js"
   ],
   "scripts": {
@@ -14,7 +15,8 @@
     "pretest": "npm run lint",
     "test": "node japaFile.js",
     "clean": "del build",
-    "compile": "npm run lint && npm run clean && tsc",
+    "compile": "npm run lint && npm run clean && tsc && npm run copy:files",
+    "copy:files": "copyfiles \"templates/*\" build",
     "build": "npm run compile",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext=.ts",
@@ -48,6 +50,7 @@
     "@adonisjs/view": "^2.0.9",
     "@types/node": "^14.11.2",
     "commitizen": "^4.2.1",
+    "copyfiles": "^2.4.0",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^3.0.1",
     "doctoc": "^1.4.0",
@@ -63,7 +66,9 @@
     "npm-audit-html": "^1.4.3",
     "prettier": "^2.1.2",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
     "webpack": "^5.0.0-rc.4",
     "webpack-bundle-analyzer": "^3.9.0"
   },
