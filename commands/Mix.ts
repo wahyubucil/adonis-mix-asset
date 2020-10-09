@@ -23,7 +23,7 @@ export default class Mix extends BaseCommand {
 		description: 'Open bundle analyzer',
 		default: false,
 	})
-	public analyzer: boolean
+	public analyze: boolean
 
 	public async handle() {
 		process.env.NODE_ENV = this.application.nodeEnvironment
@@ -42,7 +42,7 @@ export default class Mix extends BaseCommand {
 			'node_modules/laravel-mix/setup/webpack.config.js'
 		)) as Configuration
 
-		if (this.analyzer) {
+		if (this.analyze) {
 			webpackConfig.plugins?.push(new BundleAnalyzerPlugin())
 		}
 
