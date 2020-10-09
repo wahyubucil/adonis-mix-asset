@@ -21,7 +21,7 @@ If you need Laravel Mix for Adonis version lower than v5 you can use [adonis-mix
   - [View Helper](#view-helper)
   - [Bundle Assets](#bundle-assets)
 - [Additional Information](#additional-information)
-  - [Git Ignore](#git-ignore)
+  - [Gitignore](#gitignore)
   - [Analyze Assets Size](#analyze-assets-size)
   - [Enable Hot Module Replacement (HMR)](#enable-hot-module-replacement-hmr)
 
@@ -37,7 +37,7 @@ npm i --save-dev adonis-mix-asset laravel-mix@next
 yarn add --dev adonis-mix-asset laravel-mix@next
 ```
 
-NOTE: We're using Laravel Mix v6.0.0-beta because the configuration already supported Typescript compilation with Babel. So we don't need to change Webpack Config and create additional `tsconfig.json` in our AdonisJs v5 project.
+NOTE: We're using Laravel Mix v6.0.0-beta because the configuration already supported Typescript compilation with Babel. So we don't need to change the Webpack Config and create additional `tsconfig.json` in our AdonisJs v5 project.
 
 ### Setup
 ```bash
@@ -93,7 +93,7 @@ node ace mix --production
 
 ## Additional Information
 
-### Git Ignore
+### Gitignore
 Add this to your `.gitignore` file :
 ```.gitignore
 mix-manifest.json
