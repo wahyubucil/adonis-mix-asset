@@ -2,7 +2,9 @@ import { BaseCommand, flags } from '@adonisjs/ace'
 import { existsSync } from 'fs'
 import { join } from 'path'
 import { webpack, Configuration } from 'webpack'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+
+// TODO: Use esm import when webpack-bundle-analyzer already support Webpack 5
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 export default class Mix extends BaseCommand {
 	public static commandName = 'mix'
