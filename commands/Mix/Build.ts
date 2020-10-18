@@ -31,7 +31,7 @@ export default class MixBuild extends BaseCommand {
 		}
 
 		if (this.analyze) {
-			webpackConfigPath = require.resolve('../setup/webpack.config.js')
+			webpackConfigPath = require.resolve('../../setup/webpack.config.js')
 		}
 
 		const mixConfigPath = join(this.application.cliCwd!, this.mixConfig)

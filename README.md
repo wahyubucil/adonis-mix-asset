@@ -19,11 +19,12 @@ If you need Laravel Mix for Adonis version lower than v5 you can use [adonis-mix
 - [Usage](#usage)
   - [Example Configuration](#example-configuration)
   - [View Helper](#view-helper)
-  - [Bundle Assets](#bundle-assets)
+  - [Compile Assets](#compile-assets)
 - [Additional Information](#additional-information)
   - [Gitignore](#gitignore)
   - [Analyze Assets Size](#analyze-assets-size)
-  - [Enable Hot Module Replacement (HMR)](#enable-hot-module-replacement-hmr)
+  - [Enable Hot Module Replacement (HMR) / Hot Reloading](#enable-hot-module-replacement-hmr--hot-reloading)
+  - [Use Another Mix Configuration](#use-another-mix-configuration)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -75,20 +76,20 @@ Use `mix` view helper to generate assets url. Example :
 ```
 The view helper parses `mix-manifest.json` to generate assets url.
 
-### Bundle Assets
-Make sure before you run the command, you already configuring the `webpack.mix.js` file.
-
-Bundle assets :
+### Compile Assets
+Make sure before you run the command, you already configuring the `webpack.mix.js` file, and run `node ace serve` or `node ace build`.
+ 
+Build assets :
 ```bash
-node ace mix
+node ace mix:build
 ```
-Bundle assets and watch for changes :
+Build assets and watch for file changes :
 ```bash
-node ace mix --watch
+node ace mix:watch
 ```
-Bundle assets for production :
+Build assets for production :
 ```bash
-node ace mix --production
+node ace mix:build --production
 ```
 
 ## Additional Information
@@ -105,9 +106,9 @@ public/styles
 ```
 
 ### Analyze Assets Size
-If you want to analyze all of your asset sizes (usually for production assets). Run this command :
+If you want to analyze all of your asset sizes for production. Run this command :
 ```bash
-node ace mix --analyze --production
+node ace mix:build --analyze --production
 ```
 It will open your browser automatically and show an interactive treemap visualization of the contents of all your assets.
 
@@ -117,23 +118,19 @@ Analyzer preview :
 ![webpack bundle analyzer zoomable treemap](https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif)
 Source : [webpack-bundle-analyzer documentation](https://github.com/webpack-contrib/webpack-bundle-analyzer#readme).
 
-### Enable Hot Module Replacement (HMR)
+### Enable Hot Module Replacement (HMR) / Hot Reloading
 First, read [Laravel Mix instructions](https://laravel-mix.com/docs/hot-module-replacement) about HMR.
 
-Add this script to your `package.json` :
-```json
-...
-"scripts": {
-  ...
-  "hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js"
-  ...
-}
-...
+Run this command to enable HMR :
+```bash
+node ace mix:watch --hot
 ```
 
-And run dev server with :
+### Use Another Mix Configuration
+If you want to use another Mix configuration, you can use `--mix-config` option either on `mix:build` or `mix:watch`. Example :
 ```bash
-npm run hot
+node ace mix:build --mix-config prod/webpack.mix.js
+node ace mix:watch --mix-config prod/webpack.mix.js
 ```
 
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
