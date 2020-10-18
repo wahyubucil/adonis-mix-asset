@@ -1,6 +1,6 @@
 {
   "name": "adonis-mix-asset",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "description": "Laravel Mix for Asset Bundler on AdonisJs v5",
   "main": "build/providers/MixAssetProvider.js",
   "files": [
