@@ -1,6 +1,6 @@
 {
   "name": "adonis-mix-asset",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Laravel Mix for Asset Bundler on AdonisJs v5",
   "main": "build/providers/MixAssetProvider.js",
   "files": [
@@ -43,7 +43,7 @@
   "homepage": "https://github.com/wahyubucil/adonis-mix-asset#readme",
   "devDependencies": {
     "@adonisjs/ace": "^7.1.5",
-    "@adonisjs/core": "^5.0.2-beta-rc-6",
+    "@adonisjs/core": "^5.0.2-beta-rc-8",
     "@adonisjs/fold": "^7.0.7",
     "@adonisjs/mrm-preset": "^2.4.0",
     "@adonisjs/sink": "^4.1.3",
@@ -66,10 +66,10 @@
     "npm-audit-html": "^1.4.3",
     "prettier": "^2.1.2",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "webpack": "^5.1.3"
   },
   "dependencies": {
-    "webpack": "^5.1.0",
     "webpack-bundle-analyzer": "^3.9.0"
   },
   "peerDependencies": {
