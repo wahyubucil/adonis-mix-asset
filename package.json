@@ -48,7 +48,7 @@
     "@adonisjs/fold": "^6.4.1",
     "@adonisjs/mrm-preset": "^2.4.0",
     "@adonisjs/sink": "^3.0.3",
-    "@adonisjs/view": "^3.0.4",
+    "@adonisjs/view": "^2.0.9",
     "@types/node": "^14.11.8",
     "commitizen": "^4.2.1",
     "copyfiles": "^2.4.0",
