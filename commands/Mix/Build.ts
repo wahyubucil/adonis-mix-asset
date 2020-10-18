@@ -1,4 +1,4 @@
-import { BaseCommand, flags } from '@adonisjs/ace'
+import { BaseCommand, flags } from '@adonisjs/core/build/standalone'
 import { spawn } from 'child_process'
 import { existsSync } from 'fs'
 import { join } from 'path'
@@ -23,7 +23,7 @@ export default class MixBuild extends BaseCommand {
 	})
 	public mixConfig: string
 
-	public async handle() {
+	public async run() {
 		let webpackConfigPath = require.resolve('laravel-mix/setup/webpack.config.js')
 		if (!existsSync(webpackConfigPath)) {
 			this.logger.error('Please install Laravel Mix')

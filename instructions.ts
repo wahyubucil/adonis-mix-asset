@@ -11,9 +11,9 @@ export default async function instructions(
 ) {
 	const mixConfig = new files.MustacheFile(projectRoot, 'webpack.mix.js', MIX_CONFIG_TEMPLATE_STUB)
 	if (mixConfig.exists()) {
-		logger.skip('webpack.mix.js File already exists')
+		logger.action('create').skipped('webpack.mix.js', 'File already exists')
 	} else {
 		mixConfig.apply({}).commit()
-		logger.create('webpack.mix.js')
+		logger.action('create').succeeded('webpack.mix.js')
 	}
 }
