@@ -72,6 +72,8 @@
     "webpack-bundle-analyzer": "^3.9.0"
   },
   "peerDependencies": {
+		"@adonisjs/core": "^5.0.2-beta-rc",
+		"@adonisjs/view": "^3.0.0",
     "laravel-mix": "^6.0.0-beta.10"
   },
   "husky": {
