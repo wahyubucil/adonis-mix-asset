@@ -1,13 +1,13 @@
 # adonis-mix-asset
-> Laravel Mix for Asset Bundler on AdonisJs v5
+> Laravel Mix for Asset Bundler on AdonisJS v5
 
 [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
 
-Adonis Mix Asset is assets bundler based on [Laravel Mix](https://laravel-mix.com) for AdonisJs v5 application.
+Adonis Mix Asset is an assets bundler based on [Laravel Mix](https://laravel-mix.com) for AdonisJS v5 application.
 
-[Laravel Mix](https://laravel-mix.com) is awesome assets bundler and easy to use!
+[Laravel Mix](https://laravel-mix.com) is an awesome assets bundler and easy to use!
 
-If you need Laravel Mix for Adonis version lower than v5 you can use [adonis-mix](https://github.com/deathman92/adonis-mix).
+If you need Laravel Mix for AdonisJS version lower than v5 you can use [adonis-mix](https://github.com/deathman92/adonis-mix).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -25,6 +25,7 @@ If you need Laravel Mix for Adonis version lower than v5 you can use [adonis-mix
   - [Analyze Assets Size](#analyze-assets-size)
   - [Enable Hot Module Replacement (HMR) / Hot Reloading](#enable-hot-module-replacement-hmr--hot-reloading)
   - [Use Another Mix Configuration](#use-another-mix-configuration)
+  - [Tips on Using Typescript Asset](#tips-on-using-typescript-asset)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -38,7 +39,7 @@ npm i --save-dev adonis-mix-asset laravel-mix@next
 yarn add --dev adonis-mix-asset laravel-mix@next
 ```
 
-NOTE: We're using Laravel Mix v6.0.0-beta because the configuration already supported Typescript compilation with Babel. So we don't need to change the Webpack Config and create additional `tsconfig.json` in our AdonisJs v5 project.
+NOTE: We're using Laravel Mix v6.0.0-beta because the configuration already supported Typescript compilation with Babel. So if you want to use Typescript on Front-End development, you don't need to worry about browsers support.
 
 ### Setup
 ```bash
@@ -53,7 +54,7 @@ The configuration file is on `webpack.mix.js`.
 ```js
 const mix = require('laravel-mix')
 
-// NOTE: Don't remove this, Because it's the default public folder path on AdonisJs
+// NOTE: Don't remove this, Because it's the default public folder path on AdonisJS
 mix.setPublicPath('public')
 
 // Add your assets here
@@ -112,7 +113,7 @@ node ace mix:build --analyze --production
 ```
 It will open your browser automatically and show an interactive treemap visualization of the contents of all your assets.
 
-If the browser doesn't open automatically. You can open it on `127.0.0.1:8888`.
+If the browser doesn't open automatically. You can open it on [127.0.0.1:8888](http://127.0.0.1:8888).
 
 Analyzer preview :
 ![webpack bundle analyzer zoomable treemap](https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif)
@@ -131,6 +132,36 @@ If you want to use another Mix configuration, you can use `--mix-config` option 
 ```bash
 node ace mix:build --mix-config prod/webpack.mix.js
 node ace mix:watch --mix-config prod/webpack.mix.js
+```
+
+### Tips on Using Typescript Asset
+If you're planning to use Typescript asset for your Front-End, here are some tips to get started.
+
+For example if you want to put your scripts on `resources/assets/scripts`, then you need to create `tsconfig.json` in those folder. That way, it will prevent conflict between your Front-End script and Back-End script.
+
+Here's an example `tsconfig.json` you can use :
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "incremental": true,
+    "noUnusedParameters": true,
+    "declaration": false,
+    "strictNullChecks": true
+  },
+  "include": ["./"]
+}
 ```
 
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript

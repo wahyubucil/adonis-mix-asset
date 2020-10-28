@@ -26,7 +26,6 @@ export default class MixAssetProvider {
 	public boot() {
 		// IoC container is ready
 		this.app.container.with(['Adonis/Core/View'], (view: ViewContract) => {
-			// Load manifest on boot. So it doesn't load every mixAsset function
 			const manifestPath = this.app.publicPath('mix-manifest.json')
 			if (existsSync(manifestPath)) {
 				view.global('mix', (path: string) =>
