@@ -6,6 +6,9 @@ import { join } from 'path'
 export default class MixWatch extends BaseCommand {
 	public static commandName = 'mix:watch'
 	public static description = 'Build and watch files for changes'
+	public static settings = {
+		stayAlive: true,
+	}
 
 	@flags.boolean({ description: 'Enable hot reloading', default: false })
 	public hot: boolean
