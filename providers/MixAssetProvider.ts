@@ -20,7 +20,7 @@ export default class MixAssetProvider {
 			return require(manifestPath)
 		}
 
-		JSON.parse(readFileSync(manifestPath, 'utf-8'))
+		return JSON.parse(readFileSync(manifestPath, 'utf-8'))
 	}
 
 	public boot() {
