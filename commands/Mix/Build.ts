@@ -7,6 +7,10 @@ export default class MixBuild extends BaseCommand {
 	public static commandName = 'mix:build'
 	public static description = 'Compile Mix'
 
+	public static settings = {
+		stayAlive: true,
+	}
+
 	@flags.boolean({ description: 'Build assets for production', default: false })
 	public production: boolean
 
