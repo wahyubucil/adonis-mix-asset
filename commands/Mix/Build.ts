@@ -6,7 +6,6 @@ import { join } from 'path'
 export default class MixBuild extends BaseCommand {
 	public static commandName = 'mix:build'
 	public static description = 'Compile Mix'
-
 	public static settings = {
 		stayAlive: true,
 	}

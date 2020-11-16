@@ -1,8 +1,11 @@
 import type { Configuration } from 'webpack'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const webpackConfig = require('laravel-mix/setup/webpack.config.js') as Configuration
+const webpackConfig = require('laravel-mix/setup/webpack.config.js') as Promise<Configuration>
 
-webpackConfig.plugins?.push(new BundleAnalyzerPlugin())
+export default async () => {
+	const config = await webpackConfig
+	config.plugins?.push(new BundleAnalyzerPlugin())
 
-export default webpackConfig
+	return config
+}
