@@ -43,14 +43,18 @@ export default class MixBuild extends BaseCommand {
 			return
 		}
 
+		let commandScript: string
+		if (this.isTTY()) commandScript = 'npx webpack --progress'
+		else commandScript = 'npx webpack'
+
 		const script = [
 			`npx cross-env NODE_ENV=${this.production ? 'production' : 'development'}`,
 			`MIX_FILE=${this.mixConfig}`,
-			'npx webpack --progress',
+			commandScript,
 			`--config=${webpackConfigPath}`,
 		].join(' ')
 
-		if (process.env.TESTING) {
+		if (this.isTesting()) {
 			process.stdout.write(script)
 			return
 		}
@@ -59,5 +63,21 @@ export default class MixBuild extends BaseCommand {
 			stdio: 'inherit',
 			shell: true,
 		})
+	}
+
+	private isTesting() {
+		return process.env.TESTING
+	}
+
+	private isTTY() {
+		if (this.isTesting() && process.env.IS_TTY !== undefined) {
+			return process.env.IS_TTY === 'true'
+		}
+
+		if (this.isTesting() && process.stdout.isTTY === undefined) {
+			return true
+		}
+
+		return process.stdout.isTTY
 	}
 }
