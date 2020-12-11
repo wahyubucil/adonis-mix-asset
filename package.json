@@ -43,39 +43,40 @@
   },
   "homepage": "https://github.com/wahyubucil/adonis-mix-asset#readme",
   "devDependencies": {
-    "@adonisjs/core": "^5.0.4-preview-rc-2",
+    "@adonisjs/core": "^5.0.4-preview-rc-2.1",
     "@adonisjs/mrm-preset": "^2.4.0",
-    "@adonisjs/sink": "^4.2.1",
-    "@adonisjs/view": "^3.0.7",
-    "@types/node": "^14.14.7",
+    "@adonisjs/sink": "^4.2.2",
+    "@adonisjs/view": "^3.1.0",
+    "@types/node": "^14.14.12",
     "@types/webpack-bundle-analyzer": "^3.9.0",
     "commitizen": "^4.2.2",
-    "copyfiles": "^2.4.0",
+    "copyfiles": "^2.4.1",
     "cz-conventional-changelog": "^3.3.0",
     "del-cli": "^3.0.1",
-    "doctoc": "^1.4.0",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
+    "doctoc": "^2.0.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-adonis": "^1.0.15",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.2.0",
     "github-label-sync": "^2.0.0",
-    "husky": "^4.3.0",
+    "husky": "^4.3.5",
     "japa": "^3.1.1",
-    "mrm": "^2.5.12",
+    "laravel-mix": "^6.0.0-beta.17",
+    "mrm": "^2.5.13",
     "np": "^7.0.0",
     "npm-audit-html": "^1.5.0",
-    "prettier": "^2.1.2",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5",
-    "webpack": "^5.4.0"
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2",
+    "webpack": "^5.10.0"
   },
   "dependencies": {
-    "webpack-bundle-analyzer": "^4.1.0"
+    "webpack-bundle-analyzer": "^4.2.0"
   },
   "peerDependencies": {
     "@adonisjs/core": "^5.0.4-preview-rc",
-    "@adonisjs/view": "^3.0.8",
-    "laravel-mix": "^6.0.0-beta.14"
+    "@adonisjs/view": "^3.0.0",
+    "laravel-mix": "^6.0.0-beta"
   },
   "husky": {
     "hooks": {
