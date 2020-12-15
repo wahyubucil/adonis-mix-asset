@@ -33,10 +33,10 @@ If you need Laravel Mix for AdonisJS version lower than v5 you can use [adonis-m
 
 ### Installation
 ```bash
-npm i --save-dev adonis-mix-asset laravel-mix@next
+npm i adonis-mix-asset && npm i --save-dev laravel-mix@next
 
 # or if using Yarn
-yarn add --dev adonis-mix-asset laravel-mix@next
+yarn add adonis-mix-asset && yarn add --dev laravel-mix@next
 ```
 
 NOTE: We're using Laravel Mix v6.0.0-beta because the configuration already supported Typescript compilation with Babel. So if you want to use Typescript on Front-End development, you don't need to worry about browsers support.
