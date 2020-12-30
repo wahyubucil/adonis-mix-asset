@@ -59,9 +59,13 @@ export default class MixBuild extends BaseCommand {
 			return
 		}
 
-		spawn(script, {
+		const child = spawn(script, {
 			stdio: 'inherit',
 			shell: true,
+		})
+
+		child.on('exit', (code) => {
+			if (code) process.exitCode = code
 		})
 	}
 
