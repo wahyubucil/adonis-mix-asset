@@ -39,8 +39,6 @@ npm i adonis-mix-asset && npm i --save-dev laravel-mix
 yarn add adonis-mix-asset && yarn add --dev laravel-mix
 ```
 
-NOTE: We're using Laravel Mix v6.0.0-beta because the configuration already supported Typescript compilation with Babel. So if you want to use Typescript on Front-End development, you don't need to worry about browsers support.
-
 ### Setup
 ```bash
 node ace invoke adonis-mix-asset
