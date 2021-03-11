@@ -1,15 +1,18 @@
 {
-	"extends": [
-		"plugin:adonis/typescriptPackage",
-		"prettier",
-		"prettier/@typescript-eslint"
-	],
-	"plugins": [
-		"prettier"
-	],
-	"rules": {
-		"prettier/prettier": [
-			"error"
-		]
-	}
+  "extends": [
+    "plugin:adonis/typescriptPackage",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }

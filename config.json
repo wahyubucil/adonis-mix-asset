@@ -3,6 +3,6 @@
   "ts": true,
   "license": "MIT",
   "services": [],
-  "minNodeVersion": "12.18.2",
+  "minNodeVersion": "14.15.4",
   "probotApps": []
 }
