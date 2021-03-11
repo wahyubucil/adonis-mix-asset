@@ -1,8 +1,8 @@
 {
-	"extends": "./node_modules/@adonisjs/mrm-preset/_tsconfig",
-	"compilerOptions": {
-		"experimentalDecorators": true,
-		"skipLibCheck": true,
-		"types": ["@types/node", "@adonisjs/core", "@adonisjs/view"]
-	}
+  "extends": "./node_modules/@adonisjs/mrm-preset/_tsconfig",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "types": ["@types/node", "@adonisjs/core", "@adonisjs/view"]
+  }
 }
