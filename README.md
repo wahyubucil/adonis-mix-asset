@@ -1,13 +1,11 @@
 # Adonis Mix Asset
-> Laravel Mix for Asset Bundler on AdonisJS v5
+> Laravel Mix for Asset Bundler on AdonisJS
 
-[![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
+[![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url] 
 
-Adonis Mix Asset is an assets bundler based on [Laravel Mix](https://laravel-mix.com) for AdonisJS v5 application.
+Adonis Mix Asset is an assets bundler based on [Laravel Mix](https://laravel-mix.com) for AdonisJS application.
 
 [Laravel Mix](https://laravel-mix.com) is an awesome assets bundler and easy to use!
-
-If you need Laravel Mix for AdonisJS version lower than v5 you can use [adonis-mix](https://github.com/deathman92/adonis-mix).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -41,7 +39,7 @@ yarn add adonis-mix-asset && yarn add --dev laravel-mix
 
 ### Setup
 ```bash
-node ace invoke adonis-mix-asset
+node ace configure adonis-mix-asset
 ```
 It will install the provider, command, and copy `webpack.mix.js` configuration file to the project's root folder.
 
@@ -52,7 +50,12 @@ The configuration file is on `webpack.mix.js`.
 ```js
 const mix = require('laravel-mix')
 
-// NOTE: Don't remove this, Because it's the default public folder path on AdonisJS
+/**
+ * By default, AdonisJS public path for static assets is on the `./public` directory.
+ *
+ * If you want to change Laravel Mix public path, change the AdonisJS public path config first!
+ * See: https://docs.adonisjs.com/guides/static-assets#the-default-directory
+ */
 mix.setPublicPath('public')
 
 // Add your assets here
