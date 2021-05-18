@@ -1,4 +1,4 @@
-# adonis-mix-asset
+# Adonis Mix Asset
 > Laravel Mix for Asset Bundler on AdonisJS v5
 
 [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
