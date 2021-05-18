@@ -3,6 +3,6 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "types": ["@types/node", "@adonisjs/core", "@adonisjs/view"]
+    "types": ["@adonisjs/core", "@adonisjs/view"]
   }
 }

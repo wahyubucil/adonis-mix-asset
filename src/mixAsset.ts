@@ -1,7 +1,16 @@
+/*
+ * adonis-mix-asset
+ *
+ * (c) Wahyu Budi Saputra <wahyubucil@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import { existsSync, readFileSync } from 'fs'
 
-// Reference: https://github.com/laravel/framework/blob/8.x/src/Illuminate/Foundation/Mix.php
+// Reference: https://github.com/laravel/framework/blob/990e0e7/src/Illuminate/Foundation/Mix.php
 export function mixAsset(
   application: ApplicationContract,
   manifest: Record<string, string>,
@@ -15,7 +24,7 @@ export function mixAsset(
     const url = readFileSync(application.publicPath('hot'), 'utf-8').trim()
 
     if (url.startsWith('http://') || url.startsWith('https://')) {
-      return url.substring(url.indexOf(':') + 1, url.lastIndexOf('/')) + path
+      return url.substring(url.indexOf(':') + 1) + path
     }
 
     return '//localhost:8080' + path

@@ -1,87 +1,58 @@
-import { BaseCommand, flags } from '@adonisjs/core/build/standalone'
-import { spawn } from 'child_process'
-import { existsSync } from 'fs'
-import { join } from 'path'
+/*
+ * adonis-mix-asset
+ *
+ * (c) Wahyu Budi Saputra <wahyubucil@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-export default class MixBuild extends BaseCommand {
+import { flags } from '@adonisjs/core/build/standalone'
+import { existsSync } from 'fs'
+import { relative } from 'path'
+import { BaseMix } from './Base'
+
+/**
+ * Command to build assets
+ *
+ * Reference: https://github.com/JeffreyWay/laravel-mix/blob/8cfacdde47/bin/cli.js
+ */
+export default class MixBuild extends BaseMix {
   public static commandName = 'mix:build'
   public static description = 'Compile Mix'
   public static settings = {
     stayAlive: true,
   }
 
-  @flags.boolean({ description: 'Build assets for production', default: false })
+  @flags.boolean({ description: 'Build assets for production' })
   public production: boolean
 
-  @flags.boolean({
-    description: 'Open bundle analyzer',
-    default: false,
-  })
+  @flags.boolean({ description: 'Open bundle analyzer' })
   public analyze: boolean
 
-  @flags.string({
-    description:
-      "The path to your Mix configuration file. The default is your root 'webpack.mix.js'",
-    default: 'webpack.mix.js',
-  })
-  public mixConfig: string
-
   public async run() {
-    let webpackConfigPath = require.resolve('laravel-mix/setup/webpack.config.js')
-    if (!existsSync(webpackConfigPath)) {
-      this.logger.error('Please install Laravel Mix')
-      return
-    }
-
-    if (this.analyze) {
-      webpackConfigPath = require.resolve('../../setup/webpack.config.js')
-    }
-
-    const mixConfigPath = join(this.application.cliCwd!, this.mixConfig)
+    const mixConfigPath = this.application.makePath(this.mixConfig)
     if (!existsSync(mixConfigPath)) {
       this.logger.error(`The Mix configuration file '${this.mixConfig}' is not found`)
       return
     }
 
     let commandScript: string
-    if (this.isTTY()) commandScript = 'npx webpack --progress'
+    if (this.isTTY && this.progress) commandScript = 'npx webpack --progress'
     else commandScript = 'npx webpack'
 
-    const script = [
-      `npx cross-env NODE_ENV=${this.production ? 'production' : 'development'}`,
-      `MIX_FILE=${this.mixConfig}`,
-      commandScript,
-      `--config=${webpackConfigPath}`,
-    ].join(' ')
+    let configPath = 'laravel-mix/setup/webpack.config.js'
+    if (this.analyze) configPath = '../../setup/webpack.config.js'
 
-    if (this.isTesting()) {
-      process.stdout.write(script)
-      return
+    const webpackConfigPath = relative(this.application.appRoot, require.resolve(configPath))
+
+    const script = [commandScript, `--config="${webpackConfigPath}"`].join(' ')
+
+    const scriptEnv = {
+      NODE_ENV: this.production ? 'production' : 'development',
+      MIX_FILE: this.mixConfig,
     }
 
-    const child = spawn(script, {
-      stdio: 'inherit',
-      shell: true,
-    })
-
-    child.on('exit', (code) => {
-      if (code) process.exitCode = code
-    })
-  }
-
-  private isTesting() {
-    return process.env.TESTING
-  }
-
-  private isTTY() {
-    if (this.isTesting() && process.env.IS_TTY !== undefined) {
-      return process.env.IS_TTY === 'true'
-    }
-
-    if (this.isTesting() && process.stdout.isTTY === undefined) {
-      return true
-    }
-
-    return process.stdout.isTTY
+    this.runScript(script, scriptEnv)
   }
 }

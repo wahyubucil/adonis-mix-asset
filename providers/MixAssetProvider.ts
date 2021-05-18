@@ -1,15 +1,18 @@
+/*
+ * adonis-mix-asset
+ *
+ * (c) Wahyu Budi Saputra <wahyubucil@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-import { ViewContract } from '@ioc:Adonis/Core/View'
 import { existsSync, readFileSync } from 'fs'
 import { mixAsset } from '../src/mixAsset'
 
 export default class MixAssetProvider {
   constructor(protected app: ApplicationContract) {}
-  public static needsApplication = true
-
-  public register() {
-    // Register your own bindings
-  }
 
   /**
    * Returns the manifest file contents. During development, we make use of the
@@ -24,22 +27,12 @@ export default class MixAssetProvider {
   }
 
   public boot() {
-    // IoC container is ready
-    this.app.container.with(['Adonis/Core/View'], (view: ViewContract) => {
-      const manifestPath = this.app.publicPath('mix-manifest.json')
-      if (existsSync(manifestPath)) {
-        view.global('mix', (path: string) =>
-          mixAsset(this.app, this.getManifestContents(manifestPath), path)
-        )
-      }
-    })
-  }
-
-  public shutdown() {
-    // Cleanup, since app is going down
-  }
-
-  public ready() {
-    // App is ready
+    const View = this.app.container.resolveBinding('Adonis/Core/View')
+    const manifestPath = this.app.publicPath('mix-manifest.json')
+    if (existsSync(manifestPath)) {
+      View.global('mix', (path: string) =>
+        mixAsset(this.app, this.getManifestContents(manifestPath), path)
+      )
+    }
   }
 }
